@@ -8,6 +8,10 @@ from automation_server_client import AutomationServer, Workqueue, WorkItemError
 async def populate_queue(workqueue: Workqueue):
     logger = logging.getLogger(__name__)
 
+    # Lav frugt-array
+
+    # Loop frugter igennem. Sæt data. Brug workqueue.add_item til at tilføje dem til workqueue
+
     logger.info("Hello from populate workqueue!")
 
 
@@ -20,8 +24,14 @@ async def process_workqueue(workqueue: Workqueue):
         with item:
             data = item.get_data_as_dict()
 
+
             try:
                 # Process the item here
+
+                # Check om ["name"] er æbler
+                # Hvis ikke, så raise WorkItemError
+                
+                # Hvis det er æbler, så print "Hurra, et æble!"
                 pass
             except WorkItemError as e:
                 # A WorkItemError represents a soft error that indicates the item should be passed to manual processing or a business logic fault
